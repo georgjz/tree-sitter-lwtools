@@ -1,0 +1,32 @@
+{
+  "name": "tree-sitter-lwtools",
+  "version": "0.1.0",
+  "description": "A tree-sitter parser for 6809 assembly files using lwtools",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/.bin/tree-sitter generate && node-gyp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgjz/tree-sitter-lwtools.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "assembly",
+    "6809",
+    "grammar",
+    "atom"
+  ],
+  "author": "Georg Ziegler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/georgjz/tree-sitter-lwtools/issues"
+  },
+  "homepage": "https://github.com/georgjz/tree-sitter-lwtools#readme",
+  "dependencies": {
+    "nan": "^2.11.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.13.10"
+  }
+}
