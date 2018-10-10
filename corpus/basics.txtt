@@ -1,0 +1,15 @@
+====
+Labels Tests
+====
+
+label:
+@local:     nop
+?local:     nop operand
+
+---
+
+(source_file
+    (label)
+    (label) (opcode)
+    (label) (opcode)
+)
