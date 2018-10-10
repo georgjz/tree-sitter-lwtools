@@ -39,7 +39,7 @@ module.exports = grammar ({
         ),
 
         // line comments
-        line_comment: $ => /\*.*/
+        line_comment: $ => /\;.*/
 
     }
 });

@@ -13,3 +13,20 @@ label:
     (label) (opcode)
     (label) (opcode)
 )
+
+
+====
+Comments Tests
+====
+
+; comment line
+@local:             ; comment after label
+?local:     nop     ; comment after opcode
+
+---
+
+(source_file
+    (line_comment)
+    (label) (line_comment)
+    (label) (opcode) (line_comment)
+)

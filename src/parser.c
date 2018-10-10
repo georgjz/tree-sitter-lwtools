@@ -111,9 +111,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 0:
       if (lookahead == 0)
         ADVANCE(1);
-      if (lookahead == '*')
-        ADVANCE(2);
       if (lookahead == ':')
+        ADVANCE(2);
+      if (lookahead == ';')
         ADVANCE(3);
       if (lookahead == 'n')
         ADVANCE(4);
@@ -137,13 +137,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 2:
+      ACCEPT_TOKEN(anon_sym_COLON);
+      END_STATE();
+    case 3:
       ACCEPT_TOKEN(sym_line_comment);
       if (lookahead != 0 &&
           lookahead != '\n')
-        ADVANCE(2);
-      END_STATE();
-    case 3:
-      ACCEPT_TOKEN(anon_sym_COLON);
+        ADVANCE(3);
       END_STATE();
     case 4:
       ACCEPT_TOKEN(sym__identifier);
@@ -279,8 +279,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         ADVANCE(1);
       if (lookahead == '\n')
         ADVANCE(17);
-      if (lookahead == '*')
-        ADVANCE(2);
+      if (lookahead == ';')
+        ADVANCE(3);
       if (lookahead == 'n')
         ADVANCE(4);
       if (lookahead == 'o')
@@ -315,7 +315,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 19:
       if (lookahead == ':')
-        ADVANCE(3);
+        ADVANCE(2);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
@@ -334,8 +334,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 21:
       if (lookahead == '\n')
         ADVANCE(17);
-      if (lookahead == '*')
-        ADVANCE(2);
+      if (lookahead == ';')
+        ADVANCE(3);
       if (lookahead == 'n')
         ADVANCE(22);
       if (lookahead == 'o')
