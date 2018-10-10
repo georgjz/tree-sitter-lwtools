@@ -2,8 +2,136 @@
   "name": "lwtools6809",
   "rules": {
     "source_file": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_line"
+      }
+    },
+    "_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "label"
+                },
+                {
+                  "type": "STRING",
+                  "value": ":"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_instruction"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_operand"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_line_break"
+        }
+      ]
+    },
+    "_line_break": {
       "type": "STRING",
-      "value": "hello"
+      "value": "\n"
+    },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[\\@\\?]"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_identifier"
+        }
+      ]
+    },
+    "_identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z\\.\\_][a-zA-Z0-9\\.\\_\\$]*"
+    },
+    "_instruction": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "opcode"
+        }
+      ]
+    },
+    "opcode": {
+      "type": "STRING",
+      "value": "nop"
+    },
+    "_operand": {
+      "type": "STRING",
+      "value": "operand"
+    },
+    "_comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "line_comment"
+        }
+      ]
+    },
+    "line_comment": {
+      "type": "PATTERN",
+      "value": "\\;.*"
     }
   },
   "extras": [
